@@ -9,6 +9,7 @@ group :production do
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'sqlite3'
 end
 
