@@ -16,6 +16,14 @@ posts = Post.all
   )
 end
 
+25.times do
+  Advertisement.create!(
+  title: "This ad is a sample ad",
+  body: "Here is the body text.",
+  price: 9001
+  )
+end
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
