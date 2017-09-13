@@ -14,13 +14,6 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  # describe "GET #show" do
-  #   it "returns http success" do
-  #     get :show
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-  #
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -32,9 +25,9 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to render_template :new
     end
 
-    it "instanitates @post" do
+    it "instantiates @post" do
       get :new
-      expect(assigns(:posts)).not_to be_nil
+      expect(assigns(:post)).not_to be_nil
     end
   end
 
@@ -53,7 +46,25 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to redirect_to Post.last
     end
   end
-  #
+
+  describe "GET #show" do
+    it "returns http success" do
+      get :show, {id: my_post.id}
+      expect(response).to have_http_status(:success)
+    end
+
+    it "renders the #show view" do
+      get :show, {id: my_post.id}
+      expect(response).to render_template :show
+    end
+
+    it "assigns my_post to @post" do
+      get :show, {id: my_post.id}
+      expect(assigns(:post)).to eq(my_post)
+    end
+
+  end
+
   # describe "GET #edit" do
   #   it "returns http success" do
   #     get :edit
