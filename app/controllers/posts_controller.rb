@@ -38,7 +38,20 @@ class PostsController < ApplicationController
       flash[:notice] = "Post was updated."
       redirect_to @post
     else
-      flash[:notice] = "Your post could not be updated. Please try again."
+      flash.now[:alert] = "Your post could not be updated. Please try again."
       render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      flash[:notice] = "#{@post.title} was deleted successfully."
+      redirect_to posts_path
+    else
+      flash.now[:alert] = "There was an error deleting your post. Please try again."
+      render :show
+    end
   end
 end
