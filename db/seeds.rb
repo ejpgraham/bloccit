@@ -8,6 +8,13 @@ require 'random_data'
 end
 posts = Post.all
 
+50.times do
+  Question.create!(
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph,
+  resolved: true
+  )
+end
 
 100.times do
   Comment.create!(
