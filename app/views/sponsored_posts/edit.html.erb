@@ -1,0 +1,11 @@
+  <h1> Edit  <%= @sponsored_post.title %>  </h1>
+
+<%= form_for [@sponsored_post.topic, @sponsored_post] do |f| %>
+  <%= f.label "Title"  %>
+  <%= f.text_field :title, class: "form-control" %>
+  <%= f.label "Price" %>
+  <%= f.text_field :price, class: "form-control" %>
+  <%= f.label "Body" %>
+  <%= f.text_area :body, class: "form-control" %>
+    <%= f.submit "Submit", class: "btn btn-success"%>
+  <% end %>

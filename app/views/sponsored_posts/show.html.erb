@@ -1,0 +1,7 @@
+<h1> <%= @sponsored_post.title %>  </h1>
+
+<p> <%= @sponsored_post.body %> </p>
+
+<p> This post cost $<%= @sponsored_post.price %> </p>
+
+<%= link_to "Edit", edit_topic_sponsored_post_path, class: "btn btn-success"  %>
