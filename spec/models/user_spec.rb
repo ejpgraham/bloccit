@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let(:lowercase_user) { User.create!(name: "bloccit user", email: "user@bloccit.com", password: "password") }
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
   # Shoulda tests for name
   it { is_expected.to validate_presence_of(:name) }
@@ -20,6 +21,10 @@ RSpec.describe User, type: :model do
   describe "attributes" do
     it "should have email and name attributes" do
       expect(user).to have_attributes(name: "Bloccit User", email: "user@bloccit.com")
+    end
+
+    it "should use a callback to capitalize first and last name" do
+      expect(lowercase_user.name).to eq("Bloccit User")
     end
   end
 
