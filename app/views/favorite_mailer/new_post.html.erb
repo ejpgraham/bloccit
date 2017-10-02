@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html" charset="utf-8" http-equiv="Content-Type">
+    <title></title>
+  </head>
+  <body>
+    <h1>New Post <%= @post.title %> created and favorited! </h1>
+  </body>
+  <p> Visit online at <%= topic_post_url(@post.topic, @post) %>
+ </p>
+  <p> Thanks for posting, <%= @post.user.name %> </p>
+</html>
