@@ -24,4 +24,20 @@ class User < ActiveRecord::Base
     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
+
+  def user_has_posts?
+     if self.posts.empty?
+       false
+     else
+       true
+     end
+  end
+
+  def user_has_comments?
+    if self.comments.empty?
+      false
+    else
+      true
+    end
+  end
 end

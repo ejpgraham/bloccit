@@ -6,7 +6,7 @@ RSpec.describe VotesController, type: :controller do
   let(:other_user) { create(:user) }
   let(:my_topic) { create(:topic) }
   let(:user_post) { create(:post, topic: my_topic, user: other_user) }
-  let(:my_vote) { Vote.create!(value: 1) }
+  let(:my_vote) { create(:vote) }
 
   context "guest" do
     describe "POST up_vote" do
@@ -65,12 +65,13 @@ RSpec.describe VotesController, type: :controller do
 
     describe "update_post callback" do
       it "triggers update_post on save" do
-        expect(vote).to receive(:update_post).at_least(:once)
-        vote.save!
+        expect(my_vote).to receive(:update_post).at_least(:once)
+        my_vote.save!
       end
 
       it "#update_post should call update_rank on post" do
         expect(post).to receive(:update_rank).at_least(:once)
+        vote.save!
       end
     end
 
